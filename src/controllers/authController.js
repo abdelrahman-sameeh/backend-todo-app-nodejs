@@ -19,7 +19,7 @@ const postSignup = (req, res, next) => {
          return res.json({
             user,
             token: generateToken(user._id),
-         }) 
+         })
       })
       .catch(err => {
          return res.json({ error: err })
@@ -35,21 +35,20 @@ const postLogin = (req, res, next) => {
             token: generateToken(user._id)
          })
       })
-      .catch(err => { 
+      .catch(err => {
          return res.json({ error: err })
       })
 }
- 
+
 
 const logout = async (req, res, next) => {
-   
+
    const token = req.headers.authorization;
    // Add the token to the blacklist or mark it as invalidated
    invalidatedTokens.push(token);
    res.json({ message: 'Logged out successfully' });
 
 }
- 
 
 
 module.exports = {

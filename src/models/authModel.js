@@ -9,9 +9,6 @@ const userSchema = mongoose.Schema({
    },
    password: String,
    confirmPassword: String,
-   todos: {
-      type: Array
-   }
 })
 
 const User = mongoose.model('users', userSchema)
@@ -39,6 +36,7 @@ const createUser = (data) => {
             resolve(user)
          })
          .catch((err) => {
+            console.log(err);
             mongoose.disconnect()
             reject('Internal server error')
          })
@@ -72,6 +70,7 @@ const getUser = (data) => {
             }
          })
          .catch((err) => {
+            console.log(err);
             mongoose.disconnect()
             reject('Internal server error')
          })
